@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - COWebs.lb - Professional Web Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#0d47a1">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#0d47a1">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#0d47a1">
+    
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #555;
+            background-color: #f8f8f8;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #2196f3, #0d47a1);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+            color: #0d47a1;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            color: #333;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.7rem 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d47a1;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .logo span {
+            color: #64b5f6;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #0d47a1;
+        }
+        
+        .nav-links a:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2196f3;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: #0d47a1;
+            font-weight: 600;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #0d47a1, #2196f3);
+            color: #fff;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjwvcmVjdD4KPC9zdmc+');
+            opacity: 0.7;
+        }
+        
+        .page-header h1 {
+            color: #fff;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 7rem 0;
+            background-color: #fff;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            position: relative;
+        }
+        
+        .contact-info h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info h2:after {
+            left: 0;
+            transform: none;
+            width: 60px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .info-icon {
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #0d47a1;
+        }
+        
+        .info-text h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .info-text p, .info-text a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .info-text a:hover {
+            color: #2196f3;
+        }
+        
+        .social-connect {
+            margin-top: 4rem;
+        }
+        
+        .social-connect h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d47a1;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-icons a:hover {
+            background: linear-gradient(to right, #0d47a1, #2196f3);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-form::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(33, 150, 243, 0.03), rgba(13, 71, 161, 0.03));
+            z-index: -1;
+            border-radius: 12px;
+        }
+        
+        .contact-form h2 {
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-form h2:after {
+            left: 0;
+            transform: none;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .form-control:focus {
+            border-color: #2196f3;
+            outline: none;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #0d47a1, #2196f3);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* Popup message styles */
+        .popup-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            text-align: center;
+            display: none;
+            max-width: 90%;
+            width: 450px;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+        }
+        
+        .popup-message h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .popup-message p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            display: none;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2rem;
+            color: #777;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .popup-close:hover {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        .popup-icon {
+            font-size: 4rem;
+            color: #2196f3;
+            margin-bottom: 1rem;
+        }
+        
+        /* Hide Location Section */
+        .location-section {
+            display: none;
+        }
+        
+        /* Loading indicator */
+        .loading-indicator {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+            display: none;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .btn.sending {
+            position: relative;
+        }
+        
+        .btn.sending .loading-indicator {
+            display: inline-block;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #0d2b4e;
+            color: #fff;
+            padding: 5rem 0 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjwvcmVjdD4KPC9zdmc+');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #2196f3, #64b5f6);
+        }
+        
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        
+        .footer-links a::before {
+            content: '\f054';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            color: #64b5f6;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a:hover::before {
+            color: #2196f3;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .social-links a:hover {
+            background-color: #2196f3;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            footer {
+                padding: 3rem 0 1rem;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                margin-top: 2rem;
+                padding: 2rem;
+            }
+            
+            .info-item:hover {
+                transform: none;
+            }
+            
+            .faq-item:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">CO<span>Webs</span>.lb</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Let's discuss your project needs and how I can help you achieve your goals</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <h2>Let's Connect</h2>
+                    <p>Whether you have a question about my services, want to discuss a potential project, or just want to say hello, I'd love to hear from you.</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p><a href="mailto:cowebs.lb@gmail.com">cowebs.lb@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="info-text">
+                            <h3>Phone & WhatsApp</h3>
+                            <p><a href="tel:+96181796383">+961 81 796 383</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-text">
+                            <h3>Office</h3>
+                            <p>Beirut Digital District, Building 1055, Floor 3<br>Beirut, Lebanon</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-clock"></i></div>
+                        <div class="info-text">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-connect">
+                        <h3>Follow Me</h3>
+                        <div class="social-icons">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/cowebs.lb/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate-on-scroll">
+                    <h2>Send Me a Message</h2>
+                    <form name="contact" method="POST" id="contact-form" data-netlify="true" netlify-honeypot="bot-field">
+                        <p class="hidden" style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        <input type="hidden" name="form-name" value="contact" />
+                        
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone (WhatsApp)</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">
+                            Send Message
+                            <span class="loading-indicator"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup-message" id="popupMessage">
+        <span class="popup-close" id="popupClose">&times;</span>
+        <div class="popup-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Message Sent Successfully!</h3>
+        <p>Thank you for contacting me. I will review your message and get back to you within 3 business days.</p>
+        <button class="btn" id="popupBtn">Close</button>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Frequently Asked Questions</h2>
+                <p>Answers to common questions about my services</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">How long does it typically take to complete a website?</div>
+                    <div class="faq-answer">The timeline varies depending on the complexity of the project. A simple website might take 2-3 weeks, while more complex projects can take 1-3 months. During our initial consultation, I'll provide a more accurate timeline based on your specific requirements.</div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">What information do you need to get started on a project?</div>
+                    <div class="faq-answer">To get started, I'll need details about your business, your goals for the website, your target audience, any design preferences, and content (text, images, etc.) that you want to include. Don't worry if you don't have everything ready—I can guide you through the process.</div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">Do you provide website maintenance services?</div>
+                    <div class="faq-answer">Yes, I offer ongoing maintenance packages to ensure your website remains secure, up-to-date, and performing optimally. These can include regular updates, backups, security monitoring, and content updates as needed.</div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">What is your payment structure?</div>
+                    <div class="faq-answer">I typically require a 50% deposit to secure your project in my schedule, with the remaining balance due upon completion. For larger projects, we can establish a milestone-based payment schedule. All payment terms will be clearly outlined in our agreement.</div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">Can you help with web hosting and domain registration?</div>
+                    <div class="faq-answer">Absolutely! I can recommend reliable hosting providers, help with domain registration, and handle all the technical aspects of setting up your website. I'll ensure everything is properly configured for optimal performance and security.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>COWebs.lb</h4>
+                    <p>Professional web development services that drive results for your business.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/cowebs.lb/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 COWebs.lb. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkInView() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkInView();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkInView);
+            
+            // Form handling with Netlify
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupMessage = document.getElementById('popupMessage');
+            const popupClose = document.getElementById('popupClose');
+            const popupBtn = document.getElementById('popupBtn');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    // We don't prevent default here to allow Netlify to handle the form
+                    // Show loading state
+                    submitBtn.classList.add('sending');
+                    submitBtn.disabled = true;
+                    
+                    // Store form data for WhatsApp message
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Prepare WhatsApp message
+                    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${name}%0A*Subject:* ${subject}%0A%0A*Message:*%0A${message}`;
+                    
+                    // Set timeout to show the custom success message after Netlify processes the form
+                    setTimeout(() => {
+                        // Attempt to also send to WhatsApp (this will happen after form is submitted)
+                        const whatsappIframe = document.createElement('iframe');
+                        whatsappIframe.style.display = 'none';
+                        whatsappIframe.src = `https://wa.me/96181796383?text=${whatsappMessage}`;
+                        document.body.appendChild(whatsappIframe);
+                        
+                        setTimeout(() => {
+                            // Remove iframe after a short delay
+                            if (document.body.contains(whatsappIframe)) {
+                                document.body.removeChild(whatsappIframe);
+                            }
+                        }, 500);
+                    }, 1000);
+                });
+                
+                // Handle successful form submission with Netlify
+                if (window.location.search.includes('success=true')) {
+                    // If redirected back after successful submission
+                    popupOverlay.style.display = 'block';
+                    popupMessage.style.display = 'block';
+                    
+                    // Reset form (in case the page wasn't reloaded)
+                    if (contactForm) contactForm.reset();
+                    
+                    // Reset URL to remove success parameter
+                    history.replaceState({}, document.title, window.location.pathname);
+                }
+                
+                // Close popup
+                function closePopup() {
+                    popupOverlay.style.display = 'none';
+                    popupMessage.style.display = 'none';
+                }
+                
+                popupClose.addEventListener('click', closePopup);
+                popupBtn.addEventListener('click', closePopup);
+                popupOverlay.addEventListener('click', closePopup);
+            }
+        });
+    </script>
+</body>
+</html>

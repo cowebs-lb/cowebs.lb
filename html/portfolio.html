@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - COWebs.lb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#0d47a1">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#0d47a1">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#0d47a1">
+    
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #555;
+            background-color: #f8f8f8;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #2196f3, #0d47a1);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+            color: #0d47a1;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            color: #333;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.7rem 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0d47a1;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .logo span {
+            color: #64b5f6;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #0d47a1;
+        }
+        
+        .nav-links a:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2196f3;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: #0d47a1;
+            font-weight: 600;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #0d47a1, #2196f3);
+            color: #fff;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjwvcmVjdD4KPC9zdmc+');
+            opacity: 0.7;
+        }
+        
+        .page-header h1 {
+            color: #fff;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 7rem 0;
+            background-color: #fff;
+        }
+        
+        /* Portfolio Filters */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        
+        .filter-btn {
+            padding: 0.7rem 1.8rem;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .filter-btn:hover {
+            background-color: #e3f2fd;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(to right, #0d47a1, #2196f3);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .portfolio-item {
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(33, 150, 243, 0.2);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            background-color: #e1f5fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0d47a1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-img i {
+            font-size: 3rem;
+            color: #2196f3;
+        }
+        
+        .portfolio-img::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(33, 150, 243, 0.05), rgba(13, 71, 161, 0.05));
+        }
+        
+        .portfolio-content {
+            padding: 2rem;
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            color: #0d47a1;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .portfolio-content h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #0d47a1, #2196f3);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.2);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* Project Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            max-width: 900px;
+            margin: 5% auto;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .modal.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-banner {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d47a1;
+            font-weight: bold;
+            position: relative;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .project-banner i {
+            font-size: 5rem;
+            opacity: 0.3;
+        }
+        
+        .project-banner::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(33, 150, 243, 0.05), rgba(13, 71, 161, 0.05));
+        }
+        
+        .project-info {
+            padding: 3rem;
+        }
+        
+        .project-info h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .project-info h2:after {
+            left: 0;
+            transform: none;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e3f2fd;
+        }
+        
+        .meta-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #0d47a1;
+        }
+        
+        .meta-item p {
+            color: #666;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d47a1;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+        }
+        
+        .project-info ul {
+            margin-left: 1.5rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .project-info ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 7rem 0;
+            background: linear-gradient(to right, #0d47a1, #2196f3);
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8cGF0aCBkPSJNMCAwTDIwIDIwTTIwIDBMMCAyMCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMSI+PC9wYXRoPgo8L3N2Zz4=');
+            opacity: 0.1;
+        }
+        
+        .cta h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2:after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: #fff;
+            color: #0d47a1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #2196f3;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links a:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #2196f3;
+        }
+        
+        .footer-links a:hover:before {
+            transform: translateX(3px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #2196f3;
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .modal-content {
+                margin: 10% 1rem;
+            }
+            
+            .portfolio-item:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">CO<span>Webs</span>.lb</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <p>Explore a collection of my latest web development projects showcasing my expertise and creative approach.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <!-- Portfolio Filters -->
+            <div class="portfolio-filters animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="corporate">Corporate</button>
+                <button class="filter-btn" data-filter="portfolio">Portfolio</button>
+                <button class="filter-btn" data-filter="application">Web Applications</button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item animate-on-scroll" data-category="corporate">
+                    <div class="portfolio-img">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Corporate</span>
+                        <h3>Local Business Website</h3>
+                        <p>A clean, responsive website for a local business featuring contact information, services section, and mobile-friendly design.</p>
+                        <a href="#project1" class="btn project-modal-btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Project 1 -->
+                <div class="portfolio-item animate-on-scroll" data-category="portfolio">
+                    <div class="portfolio-img" style="background-color: #f1f1f1; opacity: 0.7;">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Coming Soon</span>
+                        <h3>Photographer's Portfolio</h3>
+                        <p>A portfolio website showcasing photography work with a gallery, about section, and contact form. Currently in development.</p>
+                        <span class="btn" style="background: #ccc; cursor: default; box-shadow: none;">In Progress</span>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Project 2 -->
+                <div class="portfolio-item animate-on-scroll" data-category="ecommerce">
+                    <div class="portfolio-img" style="background-color: #f1f1f1; opacity: 0.7;">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Coming Soon</span>
+                        <h3>Small Business Store</h3>
+                        <p>An e-commerce website for a small business featuring product listings, shopping cart, and responsive checkout process.</p>
+                        <span class="btn" style="background: #ccc; cursor: default; box-shadow: none;">In Progress</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal 1 -->
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="project-banner">
+                <i class="fas fa-building"></i>
+                <span>Local Business Website</span>
+            </div>
+            <div class="project-info">
+                <h2>Local Business Website</h2>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Client</h4>
+                        <p>Lebanon First Services</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Category</h4>
+                        <p>Corporate</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Technologies</h4>
+                        <p>HTML5, CSS3, JavaScript</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Year</h4>
+                        <p>2023</p>
+                    </div>
+                </div>
+                
+                <h3>Project Overview</h3>
+                <p>Lebanon First Services needed a simple yet professional website to establish their online presence. They required a clean design that would clearly present their services and make it easy for potential customers to get in touch.</p>
+                
+                <p>The resulting website includes a responsive layout that works across all device sizes, a clean services section, and multiple contact options to encourage customer inquiries.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Fully responsive design for all screen sizes</li>
+                    <li>Clear service showcase with descriptions</li>
+                    <li>Optimized for fast loading and performance</li>
+                    <li>Contact form with validation</li>
+                    <li>Mobile-friendly navigation menu</li>
+                    <li>Search engine optimized structure</li>
+                </ul>
+                
+                <h3>Project Gallery</h3>
+                <div class="project-gallery">
+                    <div class="gallery-img">Homepage</div>
+                    <div class="gallery-img">Services Page</div>
+                    <div class="gallery-img">Contact Page</div>
+                    <div class="gallery-img">Mobile View</div>
+                </div>
+                
+                <h3>Results</h3>
+                <p>Since launching their new website, Lebanon First Services has reported an increase in customer inquiries and positive feedback about their professional online presence. The site has helped them establish credibility with new customers and provide better service to existing ones.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2>Let's Work Together</h2>
+                <p>Ready to transform your business with a professional website that stands out from the competition?</p>
+                <a href="contact.html" class="btn btn-outline">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>COWebs.lb</h4>
+                    <p>Professional web development services that drive results for your business.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/cowebs.lb/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 COWebs.lb. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkInView() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkInView();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkInView);
+            
+            // Simple modal functionality
+            const modalBtns = document.querySelectorAll('.project-modal-btn');
+            const closeBtns = document.querySelectorAll('.close-modal');
+            const modals = document.querySelectorAll('.modal');
+            
+            // Open modal when clicking on project button
+            modalBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetModal = document.querySelector(this.getAttribute('href'));
+                    targetModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    // Add animation class after a small delay
+                    setTimeout(() => {
+                        targetModal.classList.add('show');
+                    }, 50);
+                });
+            });
+            
+            // Close modal when clicking on close button
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }, 300);
+                });
+            });
+            
+            // Close modal when clicking outside modal content
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        setTimeout(() => {
+                            this.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        // Hide all items first
+                        item.style.display = 'none';
+                        
+                        // Show items based on filter
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            // Reset and apply animation
+                            item.classList.remove('visible');
+                            setTimeout(() => {
+                                checkInView();
+                            }, 50);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

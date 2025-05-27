@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+
+# Define a redirect for successful form submissions
+[[redirects]]
+  from = "/html/contact"
+  to = "/html/contact.html?success=true"
+  status = 302
+  force = true
+  conditions = {Success = "true"}
+
+# Configure forms
+[forms]
+  [forms.contact]
+    name = "contact"
+    success_url = "/html/contact.html?success=true"
+
+# Setup email notifications for form submissions
+[forms.contact.notifications]
+  subject = "New Contact Form Submission"
+  recipients = ["cowebs.lb@gmail.com"]
